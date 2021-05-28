@@ -15,7 +15,7 @@ module "tags" {
 
 
 resource "azurerm_resource_group" "rg" {
-  name     = "${var.product}-${var.environment}"
+  name     = "${var.product}-${var.environment}-rg"
   location = var.location
   tags     = module.tags.common_tags
 }
