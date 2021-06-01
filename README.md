@@ -32,7 +32,8 @@
 | [azurerm_resource_group.rg](https://registry.terraform.io/providers/hashicorp/azurerm/2.61.0/docs/resources/resource_group) | resource |
 | [azurerm_role_assignment.kv](https://registry.terraform.io/providers/hashicorp/azurerm/2.61.0/docs/resources/role_assignment) | resource |
 | [azurerm_role_assignment.miroles](https://registry.terraform.io/providers/hashicorp/azurerm/2.61.0/docs/resources/role_assignment) | resource |
-| [azurerm_role_assignment.subidrole](https://registry.terraform.io/providers/hashicorp/azurerm/2.61.0/docs/resources/role_assignment) | resource |
+| [azurerm_role_assignment.subidcontributer](https://registry.terraform.io/providers/hashicorp/azurerm/2.61.0/docs/resources/role_assignment) | resource |
+| [azurerm_role_assignment.subiduseraccessadmin](https://registry.terraform.io/providers/hashicorp/azurerm/2.61.0/docs/resources/role_assignment) | resource |
 | [azurerm_user_assigned_identity.usermi](https://registry.terraform.io/providers/hashicorp/azurerm/2.61.0/docs/resources/user_assigned_identity) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/2.61.0/docs/data-sources/client_config) | data source |
 | [azurerm_key_vault.kv](https://registry.terraform.io/providers/hashicorp/azurerm/2.61.0/docs/data-sources/key_vault) | data source |
@@ -49,10 +50,8 @@
 | <a name="input_environment"></a> [environment](#input\_environment) | Name of the environment to deploy the resource. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Azure location to deploy the resource | `string` | `"UK South"` | no |
 | <a name="input_max_throughput"></a> [max\_throughput](#input\_max\_throughput) | The Maximum throughput of SQL database (RU/s). | `string` | `"4000"` | no |
-| <a name="input_mi_roles"></a> [mi\_roles](#input\_mi\_roles) | Roles assigned to managed identity | `list` | <pre>[<br>  "Contributor",<br>  "User Access Administrator"<br>]</pre> | no |
 | <a name="input_parition_key"></a> [parition\_key](#input\_parition\_key) | Partition Keys for corresponding databases. | `map(any)` | <pre>{<br>  "cve-reports": "/build/git_url",<br>  "performance-metrics": "/_partitionKey",<br>  "pipeline-metrics": "/_partitionKey"<br>}</pre> | no |
 | <a name="input_product"></a> [product](#input\_product) | Name of the product. | `string` | n/a | yes |
-| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | Name of the Subscription. | `any` | n/a | yes |
 
 ## Outputs
 

@@ -34,13 +34,6 @@ variable "parition_key" {
     pipeline-metrics    = "/_partitionKey"
   }
 }
-variable "mi_roles" {
-  description = "Roles assigned to managed identity"
-  default     = ["Contributor", "User Access Administrator"]
-}
-variable "subscription_id" {
-  description = "Name of the Subscription."
-}
 
 variable "azure_keyvault" {
   description = "Name of the Azure KeyVault to store cosmosdb keys & disk details."

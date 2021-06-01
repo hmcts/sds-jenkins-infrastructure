@@ -44,10 +44,19 @@ resource "azurerm_role_assignment" "miroles" {
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
 
-resource "azurerm_role_assignment" "subidrole" {
-  for_each             = toset(var.mi_roles)
-  scope                = data.azurerm_subscription.subid.id
-  role_definition_name = each.value
+resource "azurerm_role_assignment" "subidcontributer" {
+
+  for_each             = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.sboxptl
+  scope                = "/subscriptions/${each.value}"
+  role_definition_name = "Contributor"
+  principal_id         = azurerm_user_assigned_identity.usermi.principal_id
+}
+
+resource "azurerm_role_assignment" "subiduseraccessadmin" {
+
+  for_each             = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.sboxptl
+  scope                = "/subscriptions/${each.value}"
+  role_definition_name = "User Access Administrator"
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
 
@@ -68,3 +77,4 @@ resource "azurerm_key_vault_secret" "db" {
   value        = azurerm_cosmosdb_account.cosmosdb.primary_master_key
   key_vault_id = data.azurerm_key_vault.kv.id
 }
+
