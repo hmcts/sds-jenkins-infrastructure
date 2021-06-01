@@ -34,11 +34,3 @@ variable "parition_key" {
     pipeline-metrics    = "/_partitionKey"
   }
 }
-
-variable "azure_keyvault" {
-  description = "Name of the Azure KeyVault to store cosmosdb keys & disk details."
-}
-variable "azure_keyvault_rg" {
-  description = "Name of the Azure KeyVault resource group."
-  default     = "sds-platform-sbox-rg"
-}

@@ -32,7 +32,7 @@ resource "azurerm_managed_disk" "disk" {
 }
 
 resource "azurerm_user_assigned_identity" "usermi" {
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = data.azurerm_resource_group.mi.name
   location            = var.location
   name                = "${var.product}-${var.environment}-mi"
   tags                = module.tags.common_tags
