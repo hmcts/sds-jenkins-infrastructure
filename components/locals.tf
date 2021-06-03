@@ -10,7 +10,7 @@ locals {
     DTS-SHAREDSERVICES-PROD = "5ca62022-6aa2-4cee-aaa7-e7536c8d566c",
     DTS-SHAREDSERVICES-DEV  = "867a878b-cb68-4de5-9741-361ac9e178b6"
   }
-  sboxptl = {
+  ptlsbox = {
     DTS-SHAREDSERVICES-SBOX = "a8140a9e-f1b0-481f-a4de-09e2ee23f7ab"
   }
 }

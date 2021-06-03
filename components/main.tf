@@ -46,7 +46,7 @@ resource "azurerm_role_assignment" "miroles" {
 
 resource "azurerm_role_assignment" "subidcontributer" {
 
-  for_each             = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.sboxptl
+  for_each             = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.ptlsbox
   scope                = "/subscriptions/${each.value}"
   role_definition_name = "Contributor"
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
@@ -54,7 +54,7 @@ resource "azurerm_role_assignment" "subidcontributer" {
 
 resource "azurerm_role_assignment" "subiduseraccessadmin" {
 
-  for_each             = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.sboxptl
+  for_each             = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.ptlsbox
   scope                = "/subscriptions/${each.value}"
   role_definition_name = "User Access Administrator"
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
