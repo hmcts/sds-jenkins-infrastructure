@@ -24,9 +24,9 @@ parameters:
   - name: env
     displayName: Environment
     type: string
-    default: 'SBOX'
+    default: 'PTLSBOX'
     values:
-    - SBOX
+    - PTLSBOX
 
 variables:
   - name: tfversion
