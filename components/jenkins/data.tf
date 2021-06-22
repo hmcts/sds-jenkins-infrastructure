@@ -5,11 +5,11 @@ data "azurerm_subscription" "sub" {
 }
 
 data "azurerm_key_vault" "kv" {
-  name                = "${lower(replace(data.azurerm_subscription.sub.display_name, "-", ""))}kv"
+  name                = data.azurerm_subscription.sub.display_name == "DTS-SHAREDSERVICESPTL-SBOX" ? "dtssdsptlsbox" : "${lower(replace(data.azurerm_subscription.sub.display_name, "-", ""))}kv"
   resource_group_name = "genesis-rg"
 }
 
 data "azurerm_resource_group" "mi" {
-  name = "managed-identities-${var.environment}-rg"
+  name = "managed-identities-${var.env}-rg"
 }
 
