@@ -5,7 +5,7 @@ data "azurerm_subscription" "sub" {
 }
 
 data "azurerm_key_vault" "kv" {
-  name                = data.azurerm_subscription.sub.display_name == "DTS-SHAREDSERVICESPTL-SBOX" ? "dtssdsptlsbox" : "${lower(replace(data.azurerm_subscription.current.display_name, "-", ""))}kv"
+  name                = data.azurerm_subscription.sub.display_name == "DTS-SHAREDSERVICESPTL-SBOX" ? "dtssdsptlsbox" : "${lower(replace(data.azurerm_subscription.sub.display_name, "-", ""))}kv"
   resource_group_name = "genesis-rg"
 }
 
