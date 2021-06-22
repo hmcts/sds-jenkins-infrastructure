@@ -8,20 +8,20 @@
 
 module "tags" {
   source      = "git::https://github.com/hmcts/terraform-module-common-tags.git?ref=master"
-  environment = lower(var.environment)
+  environment = lower(var.env)
   product     = var.product
   builtFrom   = var.builtFrom
 }
 
 
 resource "azurerm_resource_group" "rg" {
-  name     = "${var.product}-${var.environment}-rg"
+  name     = "${var.product}-${var.env}-rg"
   location = var.location
   tags     = module.tags.common_tags
 }
 
 resource "azurerm_managed_disk" "disk" {
-  name                 = "${var.product}-${var.environment}-disk"
+  name                 = "${var.product}-${var.env}-disk"
   location             = var.location
   resource_group_name  = azurerm_resource_group.rg.name
   storage_account_type = "Premium_LRS"
@@ -34,7 +34,7 @@ resource "azurerm_managed_disk" "disk" {
 resource "azurerm_user_assigned_identity" "usermi" {
   resource_group_name = data.azurerm_resource_group.mi.name
   location            = var.location
-  name                = "${var.product}-${var.environment}-mi"
+  name                = "${var.product}-${var.env}-mi"
   tags                = module.tags.common_tags
 }
 

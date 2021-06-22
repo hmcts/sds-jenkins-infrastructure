@@ -10,6 +10,6 @@ data "azurerm_key_vault" "kv" {
 }
 
 data "azurerm_resource_group" "mi" {
-  name = "managed-identities-${var.environment}-rg"
+  name = "managed-identities-${var.env}-rg"
 }
 
