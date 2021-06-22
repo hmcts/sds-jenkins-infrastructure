@@ -67,7 +67,7 @@ stages:
               backendAzureRmStorageAccountName: $(controlStorageAccount)
               backendAzureRmStorageAccountSku: Standard_LRS
               backendAzureRmContainerName: subscription-tfstate
-              backendAzureRmKey: '${{ parameters.location }}/${{ variables.project }}/$(env)/terraform-jenkins.tfstate'
+              backendAzureRmKey: '${{ parameters.location }}/${{ variables.project }}/$(env)/jenkins/terraform-jenkins.tfstate'
               commandOptions: '-backend-config=subscription_id=${{ variables.tfinitSub }} -var builtFrom=${{ variables.builtFrom }} -var product=${{ variables.product }}'
 
           - task: TerraformCLI@0
