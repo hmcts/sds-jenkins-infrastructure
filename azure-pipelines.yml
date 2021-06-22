@@ -1,5 +1,3 @@
-name: ${{ parameters.Action }} - ${{ parameters.env }}.${{ parameters.location }} 
-
 trigger:
   batch: true
   branches:
