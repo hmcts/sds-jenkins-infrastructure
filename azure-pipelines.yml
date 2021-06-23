@@ -27,7 +27,7 @@ parameters:
     - deployment: 'ptlsbox_jenkins'
       environment: 'ptlsbox'
       component: 'jenkins'
-      service_connection: 'GA'
+      service_connection: 'OPS-APPROVAL-GATE-PTLSBOX-ENVS'
       dependsOn: 'Precheck'
 
 variables:
