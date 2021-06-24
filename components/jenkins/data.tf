@@ -13,3 +13,7 @@ data "azurerm_resource_group" "mi" {
   name = "managed-identities-${var.env}-rg"
 }
 
+data "azurerm_resource_group" "disks_resource_group" {
+  name = "disks-${var.env}-rg"
+}
+
