@@ -16,4 +16,3 @@ data "azurerm_resource_group" "mi" {
 data "azurerm_resource_group" "disks_resource_group" {
   name = "disks-${var.env}-rg"
 }
-
