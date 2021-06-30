@@ -59,38 +59,3 @@ resource "azurerm_role_assignment" "subiduseraccessadmin" {
   role_definition_name = "User Access Administrator"
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
-
-resource "azurerm_role_assignment" "kv" {
-  scope                = data.azurerm_key_vault.kv.id
-  role_definition_name = "Key Vault Secrets User"
-  principal_id         = azurerm_user_assigned_identity.usermi.principal_id
-}
-
-resource "azurerm_key_vault_secret" "disk" {
-  name         = "jenkins-disk-id"
-  value        = azurerm_managed_disk.disk.id
-  key_vault_id = data.azurerm_key_vault.kv.id
-}
-
-resource "azurerm_key_vault_secret" "db" {
-  name         = "cosmosdb-token-key"
-  value        = azurerm_cosmosdb_account.cosmosdb.primary_master_key
-  key_vault_id = data.azurerm_key_vault.kv.id
-}
-
-
-resource "azurerm_key_vault_access_policy" "kvaccess" {
-  key_vault_id = data.azurerm_key_vault.kv.id
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = azurerm_user_assigned_identity.usermi.principal_id
-
-  key_permissions = [
-    "Get",
-    "List"
-  ]
-
-  secret_permissions = [
-    "Get",
-    "List"
-  ]
-}
