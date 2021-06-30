@@ -7,20 +7,6 @@ resource "azurerm_key_vault" "jenkinskv" {
   soft_delete_retention_days = 7
   enable_rbac_authorization  = true
 
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = azurerm_user_assigned_identity.usermi.principal_id
-
-    key_permissions = [
-      "Get",
-      "List"
-    ]
-
-    secret_permissions = [
-      "Get",
-      "List"
-    ]
-  }
 }
 
 resource "azurerm_role_assignment" "jenkinskvrole" {
