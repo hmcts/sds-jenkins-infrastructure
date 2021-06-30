@@ -34,7 +34,7 @@ resource "azurerm_managed_disk" "disk" {
 resource "azurerm_user_assigned_identity" "usermi" {
   resource_group_name = data.azurerm_resource_group.mi.name
   location            = var.location
-  name                = "${var.product}-${var.env}-mi"
+  name                = "jenkins-${var.env}-mi"
   tags                = module.tags.common_tags
 }
 
