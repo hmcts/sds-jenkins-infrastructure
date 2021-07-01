@@ -1,5 +1,9 @@
+locals {
+  suffix = var.env == "ptlsbox" ? "-sbox" : ""
+}
+
 resource "azurerm_cosmosdb_account" "cosmosdb" {
-  name                      = "${var.product}-pipeline-metrics"
+  name                      = "${var.product}-pipeline-metrics${local.suffix}"
   location                  = var.location
   resource_group_name       = azurerm_resource_group.rg.name
   offer_type                = "Standard"
