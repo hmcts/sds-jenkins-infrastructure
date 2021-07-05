@@ -24,9 +24,9 @@ resource "azurerm_storage_account" "storage_account" {
     delete_retention_policy {
       days = 14
     }
+    versioning_enabled = true
   }
 
-  versioning_enabled = true
 
   tags = module.tags.common_tags
 }
