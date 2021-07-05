@@ -29,6 +29,11 @@ parameters:
       component: 'jenkins'
       service_connection: 'OPS-APPROVAL-GATE-PTLSBOX-ENVS'
       dependsOn: 'Precheck'
+    - deployment: 'sbox_jenkins'
+      environment: 'sbox'
+      component: 'subscription-base-infra'
+      service_connection: 'DTS-SHAREDSERVICES-SBOX'
+      dependsOn: 'Precheck'
 
 variables:
   - name: timeoutInMinutes

@@ -25,7 +25,7 @@ variable "max_throughput" {
   default     = "4000"
   description = "The Maximum throughput of SQL database (RU/s)."
 }
-variable "parition_key" {
+variable "partition_key" {
   type        = map(any)
   description = "Partition Keys for corresponding databases."
   default = {

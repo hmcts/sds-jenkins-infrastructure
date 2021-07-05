@@ -38,7 +38,7 @@ resource "azurerm_cosmosdb_sql_database" "sqlapidb" {
 
 
 resource "azurerm_cosmosdb_sql_container" "container" {
-  for_each              = var.parition_key
+  for_each              = var.partition_key
   name                  = each.key
   resource_group_name   = azurerm_resource_group.rg.name
   account_name          = azurerm_cosmosdb_account.cosmosdb.name
