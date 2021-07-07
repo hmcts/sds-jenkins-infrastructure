@@ -38,6 +38,7 @@ parameters:
       environment: 'ptl'
       component: 'jenkins'
       service_connection: 'DTS-SHAREDSERVICESPTL'
+      dependsOn: 'Precheck'
 
 variables:
   - name: timeoutInMinutes
