@@ -39,6 +39,10 @@ parameters:
       component: 'jenkins'
       service_connection: 'OPS-APPROVAL-GATE-PTL-ENVS'
       dependsOn: 'Precheck'
+    - deployment: 'prod_jenkins'
+      environment: 'prod'
+      component: 'subscription-base-infra'
+      service_connection: 'DTS-SHAREDSERVICES-PROD'
 
 variables:
   - name: timeoutInMinutes
