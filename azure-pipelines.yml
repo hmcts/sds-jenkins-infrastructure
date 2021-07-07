@@ -43,6 +43,7 @@ parameters:
       environment: 'prod'
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-PROD'
+      dependsOn: 'Precheck'
 
 variables:
   - name: timeoutInMinutes
