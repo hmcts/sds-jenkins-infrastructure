@@ -34,3 +34,5 @@ variable "partition_key" {
     pipeline-metrics    = "/_partitionKey"
   }
 }
+
+variable "private_dns_subscription_id" {}

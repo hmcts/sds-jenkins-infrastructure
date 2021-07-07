@@ -18,3 +18,9 @@ provider "azurerm" {
   alias           = "image_gallery"
   features {}
 }
+
+provider "azurerm" {
+  subscription_id = var.private_dns_subscription_id
+  alias           = "private_dns"
+  features {}
+}
