@@ -37,7 +37,7 @@ parameters:
     - deployment: 'ptl_jenkins'
       environment: 'ptl'
       component: 'jenkins'
-      service_connection: 'DTS-SHAREDSERVICESPTL'
+      service_connection: 'OPS-APPROVAL-GATE-PTL-ENVS'
       dependsOn: 'Precheck'
 
 variables:
