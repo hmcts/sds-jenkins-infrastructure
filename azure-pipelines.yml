@@ -34,6 +34,16 @@ parameters:
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-SBOX'
       dependsOn: 'Precheck'
+    - deployment: 'ptl_jenkins'
+      environment: 'ptl'
+      component: 'jenkins'
+      service_connection: 'OPS-APPROVAL-GATE-PTL-ENVS'
+      dependsOn: 'Precheck'
+    - deployment: 'prod_jenkins'
+      environment: 'prod'
+      component: 'subscription-base-infra'
+      service_connection: 'DTS-SHAREDSERVICES-PROD'
+      dependsOn: 'Precheck'
 
 variables:
   - name: timeoutInMinutes
