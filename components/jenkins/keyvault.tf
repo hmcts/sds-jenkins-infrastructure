@@ -6,6 +6,7 @@ resource "azurerm_key_vault" "jenkinskv" {
   tenant_id                  = data.azurerm_client_config.current.tenant_id
   soft_delete_retention_days = 7
   enable_rbac_authorization  = true
+  tags                       = module.tags.common_tags
 
 }
 
@@ -24,5 +25,25 @@ resource "azurerm_key_vault_secret" "disk" {
 resource "azurerm_key_vault_secret" "db" {
   name         = "cosmosdb-token-key"
   value        = azurerm_cosmosdb_account.cosmosdb.primary_master_key
+  key_vault_id = azurerm_key_vault.jenkinskv.id
+}
+
+resource "random_password" "jenkins-agent-password" {
+  length  = 16
+  special = true
+  lower   = true
+  upper   = true
+  number  = true
+}
+
+resource "azurerm_key_vault_secret" "jenkins-agent-password" {
+  name         = "jenkins-agent-password"
+  value        = random_password.jenkins-agent-password.result
+  key_vault_id = azurerm_key_vault.jenkinskv.id
+}
+
+resource "azurerm_key_vault_secret" "subscription_id" {
+  name         = "subscription-id"
+  value        = data.azurerm_client_config.current.subscription_id
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }
