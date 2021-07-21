@@ -38,7 +38,7 @@ resource "random_password" "jenkins-agent-password" {
 
 resource "azurerm_key_vault_secret" "jenkins-agent-password" {
   name         = "jenkins-agent-password"
-  value        = random_password.jenkins-agent-password
+  value        = random_password.jenkins-agent-password.result
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }
 
