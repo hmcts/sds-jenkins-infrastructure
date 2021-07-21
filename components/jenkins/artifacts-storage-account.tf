@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "storage_account" {
-  name                     = "sdsjenkinsartifacts${var.env}"
+  name                     = "sdsjenkinsafact${var.env}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = var.location
   account_kind             = "StorageV2"
