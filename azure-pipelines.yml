@@ -44,6 +44,11 @@ parameters:
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-PROD'
       dependsOn: 'Precheck'
+    - deployment: 'nonprod_jenkins'
+      environment: 'nonprod'
+      component: 'subscription-base-infra'
+      service_connection: 'DTS-SHAREDSERVICES-STG'
+      dependsOn: 'Precheck'
 
 variables:
   - name: timeoutInMinutes
