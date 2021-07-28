@@ -40,6 +40,6 @@ resource "azurerm_storage_container" "container" {
 resource "azurerm_key_vault_secret" "env_subscription_id" {
   count        = var.env == "ptl" ? 1 : 0
   name         = "${var.env}-subscription-id"
-  value        = var.prod_subscription_id
+  value        = var.env_subscription_id
   key_vault_id = data.azurerm_key_vault.jenkinskv.id
 }
