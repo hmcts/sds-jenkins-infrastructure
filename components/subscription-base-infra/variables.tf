@@ -22,5 +22,3 @@ variable "jenkins_identity_object_id" {
   description = "Objectid for jenkins managed identity"
   default     = "7ef3b6ce-3974-41ab-8512-c3ef4bb8ae01"
 }
-
-variable "env_subscription_id" {}
