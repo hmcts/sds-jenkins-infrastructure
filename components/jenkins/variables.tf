@@ -36,3 +36,5 @@ variable "partition_key" {
 }
 
 variable "private_dns_subscription_id" {}
+
+variable "prod_subscription_id" {}
