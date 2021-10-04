@@ -28,6 +28,7 @@ resource "azurerm_managed_disk" "disk" {
   create_option        = "Empty"
   disk_size_gb         = "1024"
   tags                 = module.tags.common_tags
+  zones                = ["1"]
 
 }
 
