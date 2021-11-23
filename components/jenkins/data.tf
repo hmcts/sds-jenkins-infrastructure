@@ -11,3 +11,8 @@ data "azurerm_resource_group" "mi" {
 data "azurerm_resource_group" "disks_resource_group" {
   name = "disks-${var.env}-rg"
 }
+
+data "azurerm_container_registry" "hmctspublic" {
+  name                = "hmctspublic"
+  resource_group_name = "rpe-acr-prod-rg"
+}
