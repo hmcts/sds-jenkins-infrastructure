@@ -14,7 +14,7 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  subscription_id = "bf308a5c-0624-4334-8ff8-8dca9fd43783"
+  subscription_id = "2b1afc19-5ca9-4796-a56f-574a58670244"
   alias           = "image_gallery"
   features {}
 }
