@@ -14,5 +14,5 @@ data "azurerm_resource_group" "disks_resource_group" {
 
 data "azurerm_resource_group" "acr_rg" {
   provider = azurerm.acr
-  name = "rpe-acr-prod-rg"
+  name     = "rpe-acr-prod-rg"
 }
