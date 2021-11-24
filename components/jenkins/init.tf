@@ -14,8 +14,9 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  subscription_id = "2b1afc19-5ca9-4796-a56f-574a58670244"
-  alias           = "image_gallery"
+  skip_provider_registration = true
+  subscription_id            = "2b1afc19-5ca9-4796-a56f-574a58670244"
+  alias                      = "image_gallery"
   features {}
 }
 
