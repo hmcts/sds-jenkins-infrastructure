@@ -61,8 +61,8 @@ resource "azurerm_role_assignment" "subiduseraccessadmin" {
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
 
-resource "azurerm_role_assignment" "hmctspublicpull" {
-  scope                = data.azurerm_container_registry.hmctspublic.id
+resource "azurerm_role_assignment" "hmctsacrpull" {
+  scope                = data.azurerm_resource_group.acr_rg.id
   role_definition_name = "AcrPull"
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
