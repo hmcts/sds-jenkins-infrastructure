@@ -60,3 +60,9 @@ resource "azurerm_role_assignment" "subiduseraccessadmin" {
   role_definition_name = "User Access Administrator"
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
+
+resource "azurerm_role_assignment" "hmctsacrpull" {
+  scope                = data.azurerm_resource_group.acr_rg.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_user_assigned_identity.usermi.principal_id
+}

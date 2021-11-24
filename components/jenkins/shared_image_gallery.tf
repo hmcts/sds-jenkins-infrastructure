@@ -1,7 +1,7 @@
 data "azurerm_shared_image_gallery" "imagegallery" {
   provider            = azurerm.image_gallery
-  name                = "cnpimagegallery"
-  resource_group_name = "cnp-image-gallery-rg"
+  name                = "hmcts"
+  resource_group_name = "hmcts-image-gallery-rg"
 }
 resource "azurerm_role_assignment" "imagegallery" {
   provider             = azurerm.image_gallery

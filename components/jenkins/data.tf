@@ -11,3 +11,8 @@ data "azurerm_resource_group" "mi" {
 data "azurerm_resource_group" "disks_resource_group" {
   name = "disks-${var.env}-rg"
 }
+
+data "azurerm_resource_group" "acr_rg" {
+  provider = azurerm.acr
+  name     = "rpe-acr-prod-rg"
+}

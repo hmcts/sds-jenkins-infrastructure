@@ -10,7 +10,7 @@ resources:
     type: github
     ref: DTSPO-2880_sds_ptl
     name: hmcts/cnp-azuredevops-libraries
-    endpoint: 'hmcts'
+    endpoint: 'hmcts (1)'
 
 parameters:
   - name: overrideAction
