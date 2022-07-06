@@ -56,7 +56,6 @@ resource "azurerm_cosmosdb_sql_container" "container" {
 }
 
 resource "azurerm_cosmosdb_sql_role_assignment" "this" {
-  name                = "JenkinsAccess"
   resource_group_name = azurerm_cosmosdb_account.cosmosdb.resource_group_name
   account_name        = azurerm_cosmosdb_account.cosmosdb.name
   role_definition_id  = "00000000-0000-0000-0000-000000000002" # Cosmos DB Built-in Data Contributor
