@@ -54,3 +54,12 @@ resource "azurerm_cosmosdb_sql_container" "container" {
   }
 
 }
+
+resource "azurerm_cosmosdb_sql_role_assignment" "this" {
+  resource_group_name = azurerm_cosmosdb_account.cosmosdb.resource_group_name
+  account_name        = azurerm_cosmosdb_account.cosmosdb.name
+  # Cosmos DB Built-in Data Contributor
+  role_definition_id = "/subscriptions/${data.azurerm_client_config.current.subscription_id}/resourceGroups/{var.resource_group_name}/providers/Microsoft.DocumentDB/databaseAccounts/${azurerm_cosmosdb_account.cosmosdb.name}/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002"
+  principal_id       = azurerm_user_assigned_identity.usermi.principal_id
+  scope              = "/"
+}
