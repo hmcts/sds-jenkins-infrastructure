@@ -85,8 +85,13 @@ variables:
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
 
 stages:
+  - stage: Precheck
+    jobs:
+      - script: echo Hello
+
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
+      dependsOn: ${{ deployment.dependsOn }}
       jobs:
         - job: TerraformPlanApply
           pool:
