@@ -52,6 +52,14 @@ resource "random_password" "jenkins-agent-password3" {
   number  = true
 }
 
+resource "random_password" "jenkins-agent-password4" {
+  length  = 16
+  special = true
+  lower   = true
+  upper   = true
+  number  = true
+}
+
 resource "azurerm_key_vault_secret" "jenkins-agent-password" {
   name         = "jenkins-agent-password"
   value        = random_password.jenkins-agent-password.result
