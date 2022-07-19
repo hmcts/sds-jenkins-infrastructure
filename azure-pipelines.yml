@@ -29,11 +29,6 @@ parameters:
       component: 'jenkins'
       service_connection: 'OPS-APPROVAL-GATE-PTLSBOX-ENVS'
       dependsOn: 'Precheck'
-    - deployment: 'sbox_jenkins'
-      environment: 'sbox'
-      component: 'subscription-base-infra'
-      service_connection: 'DTS-SHAREDSERVICES-SBOX'
-      dependsOn: 'Precheck'
 
 
 variables:
@@ -50,23 +45,8 @@ variables:
   - template: vars/input-variables.yaml@cnp-azuredevops-libraries
 
 stages:
-  - stage: Precheck
-    jobs:
-      - job:
-        pool:
-          vmImage: ${{ variables.agentPool }}
-        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
-        steps:
-          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
-            parameters:
-              keyvaultName: 'infra-vault-nonprod'
-              keyvaultSecret: 'azure-devops-token'
-              serviceConnection: 'DCD-CFT-Sandbox'
-
-
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
-      dependsOn: ${{ deployment.dependsOn }}
       jobs:
         - job: TerraformPlanApply
           pool:
