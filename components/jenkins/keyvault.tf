@@ -34,10 +34,6 @@ resource "random_password" "jenkins-agent-password" {
   lower   = true
   upper   = true
   number  = true
-
-  tags = {
-    hi = "hello"
-  }
 }
 
 resource "random_password" "jenkins-agent-password2" {
@@ -52,6 +48,10 @@ resource "azurerm_key_vault_secret" "jenkins-agent-password" {
   name         = "jenkins-agent-password"
   value        = random_password.jenkins-agent-password.result
   key_vault_id = azurerm_key_vault.jenkinskv.id
+
+  tags = {
+    hi = "hello"
+  }
 }
 
 resource "azurerm_key_vault_secret" "subscription_id" {
