@@ -61,6 +61,7 @@ resource "azurerm_key_vault_secret" "jenkins-agent-password" {
     hi = "hello"
     test = "testing"
     foo = "foobar"
+    roo = "ruby"
   }
 }
 
