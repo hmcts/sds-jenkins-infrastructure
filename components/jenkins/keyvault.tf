@@ -34,6 +34,10 @@ resource "random_password" "jenkins-agent-password" {
   lower   = true
   upper   = true
   number  = true
+
+  tags {
+    hi = "hello"
+  }
 }
 
 resource "random_password" "jenkins-agent-password2" {
