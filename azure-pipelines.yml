@@ -87,7 +87,12 @@ variables:
 stages:
   - stage: Precheck
     jobs:
-      - script: echo Hello
+      - job:
+        pool:
+          vmImage: ${{ variables.agentPool }}
+        timeoutInMinutes: ${{ variables.timeoutInMinutes }}
+        steps:
+          - script: echo hello
 
   - ${{ each deployment in parameters.environment_components }}:
     - stage: ${{ deployment.deployment }}
