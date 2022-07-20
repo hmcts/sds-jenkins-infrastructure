@@ -50,7 +50,6 @@ resource "random_password" "jenkins-agent-password2" {
   number  = true
 }
 
-
 resource "azurerm_key_vault_secret" "jenkins-agent-password" {
   name         = "jenkins-agent-password"
   value        = random_password.jenkins-agent-password.result
