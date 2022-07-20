@@ -54,6 +54,13 @@ resource "azurerm_key_vault_secret" "jenkins-agent-password" {
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }
 
+tags = {
+  hi = "hello"
+  test = "testing"
+  foo = "foobar"
+  roo = "ruby"
+}
+
 resource "azurerm_key_vault_secret" "subscription_id" {
   name         = "subscription-id"
   value        = data.azurerm_client_config.current.subscription_id
