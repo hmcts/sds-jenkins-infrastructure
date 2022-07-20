@@ -66,10 +66,10 @@ resource "azurerm_key_vault_secret" "env_subscription_id" {
   value        = each.value
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }
-
-  tags = {
-    hi = "hello"
-    test = "testing"
-    foo = "foobar"
-    roo = "ruby"
-  }
+  
+resource "azurerm_key_vault_secret" "env_subscription_id2" {
+  for_each     = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.ptlsbox
+  name         = "${each.key}-subscription-id2"
+  value        = each.value
+  key_vault_id = azurerm_key_vault.jenkinskv.id
+}
