@@ -34,12 +34,6 @@ resource "azurerm_key_vault_secret" "disk" {
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }
 
-resource "azurerm_key_vault_secret" "disk2" {
-  name         = "jenkins-disk-id"
-  value        = azurerm_managed_disk.disk.id
-  key_vault_id = azurerm_key_vault.jenkinskv-prod[count.1].id
-}
-
 resource "random_password" "jenkins-agent-password" {
   length  = 16
   special = true
