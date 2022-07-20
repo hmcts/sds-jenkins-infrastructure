@@ -11,7 +11,7 @@ resource "azurerm_key_vault" "jenkinskv" {
 }
 
 resource "azurerm_key_vault" "jenkinskv-prod" {
-  count                      = var.env == "prod" ? 1 : 0
+  count                      = var.env == "prod" ? 0 : 1
   location                   = var.location
   name                       = var.env
   resource_group_name        = azurerm_resource_group.rg.name
@@ -28,17 +28,16 @@ resource "azurerm_role_assignment" "jenkinskvrole" {
   role_definition_name = "Key Vault Secrets User"
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
-
 resource "azurerm_key_vault_secret" "disk" {
   name         = "jenkins-disk-id"
   value        = azurerm_managed_disk.disk.id
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }
 
-resource "azurerm_key_vault_secret" "db" {
-  name         = "cosmosdb-token-key"
-  value        = azurerm_cosmosdb_account.cosmosdb.primary_master_key
-  key_vault_id = azurerm_key_vault.jenkinskv.id
+resource "azurerm_key_vault_secret" "disk2" {
+  name         = "jenkins-disk-id"
+  value        = azurerm_managed_disk.disk.id
+  key_vault_id = azurerm_key_vault.jenkinskv-prod.id
 }
 
 resource "random_password" "jenkins-agent-password" {
@@ -48,6 +47,15 @@ resource "random_password" "jenkins-agent-password" {
   upper   = true
   number  = true
 }
+
+resource "random_password" "jenkins-agent-password2" {
+  length  = 16
+  special = true
+  lower   = true
+  upper   = true
+  number  = true
+}
+
 
 resource "azurerm_key_vault_secret" "jenkins-agent-password" {
   name         = "jenkins-agent-password"
