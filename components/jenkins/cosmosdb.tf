@@ -26,7 +26,6 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
   }
 }
 
-
 resource "azurerm_cosmosdb_sql_database" "sqlapidb" {
   name                = var.database
   resource_group_name = azurerm_resource_group.rg.name
