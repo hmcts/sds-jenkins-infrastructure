@@ -7,6 +7,7 @@ resource "azurerm_key_vault" "jenkinskv" {
   soft_delete_retention_days = 7
   enable_rbac_authorization  = true
   tags                       = module.tags.common_tags
+  
 }
 
 resource "azurerm_key_vault" "jenkinskv-prod" {
