@@ -10,7 +10,7 @@ resource "azurerm_key_vault" "jenkinskv" {
 
 }
 
-resource "azurerm_key_vault" "jenkinskv" {
+resource "azurerm_key_vault" "jenkinskv-prod" {
   count                      = var.env == "prod" ? 1 : 0
   location                   = var.location
   name                       = var.env
