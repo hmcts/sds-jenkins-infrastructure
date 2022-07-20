@@ -36,7 +36,6 @@ resource "azurerm_cosmosdb_sql_database" "sqlapidb" {
   }
 }
 
-
 resource "azurerm_cosmosdb_sql_container" "container" {
   for_each              = var.partition_key
   name                  = each.key
