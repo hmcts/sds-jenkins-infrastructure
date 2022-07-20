@@ -10,7 +10,7 @@ resource "azurerm_key_vault" "jenkinskv" {
 }
 
 resource "azurerm_key_vault" "jenkinskv-prod" {
-  count                      = var.env == "prod" ? 0 : 1
+  count                      = var.env == "prod" ? 1 : 0
   location                   = var.location
   name                       = var.env
   resource_group_name        = azurerm_resource_group.rg.name
@@ -66,3 +66,10 @@ resource "azurerm_key_vault_secret" "env_subscription_id" {
   value        = each.value
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }
+
+  tags = {
+    hi = "hello"
+    test = "testing"
+    foo = "foobar"
+    roo = "ruby"
+  }
