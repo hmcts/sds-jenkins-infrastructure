@@ -14,15 +14,3 @@ resource "azurerm_key_vault_access_policy" "subscriptionaccess" {
     "List",
   ]
 }
-
-
-resource "azurerm_key_vault_access_policy" "subscriptionaccess-demo" {
-  key_vault_id = "c68a4bed-4c3d-4956-af51-4ae164c1957c"
-  tenant_id    = data.azurerm_client_config.current.tenant_id
-  object_id    = var.jenkins_identity_object_id
-  secret_permissions = [
-    "Get",
-    "List",
-    "Delete",
-  ]
-}
