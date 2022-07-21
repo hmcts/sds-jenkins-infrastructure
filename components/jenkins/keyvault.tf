@@ -10,9 +10,9 @@ resource "azurerm_key_vault" "jenkinskv" {
 }
 
 resource "azurerm_key_vault" "jenkinskv-prod" {
-  count                      = var.env == "prod" ? 1 : 0
+  count                      = var.env == "prod" ? 0 : 1
   location                   = var.location
-  name                       = var.env
+  name                       = prod-vault
   resource_group_name        = azurerm_resource_group.rg.name
   sku_name                   = "standard"
   tenant_id                  = data.azurerm_client_config.current.tenant_id
