@@ -12,6 +12,14 @@ resource "azurerm_resource_group" "rg" {
   tags = module.tags.common_tags
 }
 
+resource "azurerm_resource_group" "example-rg" {
+  count    = var.env == "demo" ? 0 : 1
+  name     = "jenkins-state-example"
+  location = var.location
+
+  tags = module.tags.common_tags
+}
+
 resource "azurerm_storage_account" "storage_account" {
   name                     = "sdsstate${var.env}"
   resource_group_name      = azurerm_resource_group.rg.name
