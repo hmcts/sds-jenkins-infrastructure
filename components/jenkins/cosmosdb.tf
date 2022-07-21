@@ -33,6 +33,7 @@ resource "azurerm_cosmosdb_sql_database" "sqlapidb" {
   account_name        = azurerm_cosmosdb_account.cosmosdb.name
   autoscale_settings {
     max_throughput = var.max_throughput
+
   }
 }
 
