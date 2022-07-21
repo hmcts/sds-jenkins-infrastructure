@@ -26,6 +26,7 @@ resource "azurerm_role_assignment" "jenkinskvrole" {
   role_definition_name = "Key Vault Secrets User"
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
+
 resource "azurerm_key_vault_secret" "disk" {
   name         = "jenkins-disk-id"
   value        = azurerm_managed_disk.disk.id
