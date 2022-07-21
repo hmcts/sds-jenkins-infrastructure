@@ -35,7 +35,6 @@ resource "azurerm_storage_account" "storage_account" {
     versioning_enabled = true
   }
 
-
   tags = module.tags.common_tags
 }
 
