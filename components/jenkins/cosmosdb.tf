@@ -23,6 +23,7 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
     location          = var.location
     failover_priority = 1
     zone_redundant    = true
+
   }
 }
 
