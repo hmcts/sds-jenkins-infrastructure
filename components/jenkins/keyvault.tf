@@ -41,7 +41,15 @@ resource "random_password" "jenkins-agent-password" {
 }
 
 resource "random_password" "jenkins-agent-password2" {
-  length  = 16
+  length  = 12
+  special = true
+  lower   = true
+  upper   = true
+  number  = true
+}
+
+resource "random_password" "jenkins-agent-password3" {
+  length  = 14
   special = true
   lower   = true
   upper   = true
