@@ -68,6 +68,7 @@ resource "azurerm_key_vault_secret" "jenkins-agent-password" {
     foo = "foobar"
     roo = "ruby"
   }
+
 }
 
 resource "azurerm_key_vault_secret" "subscription_id" {
