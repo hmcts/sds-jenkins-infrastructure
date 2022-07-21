@@ -45,7 +45,6 @@ resource "azurerm_cosmosdb_sql_container" "container" {
   partition_key_version = 2
   autoscale_settings {
     max_throughput = var.max_throughput
-
   }
 
   indexing_policy {
