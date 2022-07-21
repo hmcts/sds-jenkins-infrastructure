@@ -18,6 +18,7 @@ resource "azurerm_resource_group" "example-rg" {
   location = var.location
 
   tags = module.tags.common_tags
+
 }
 
 resource "azurerm_storage_account" "storage_account" {
