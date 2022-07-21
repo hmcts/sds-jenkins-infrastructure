@@ -13,7 +13,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_resource_group" "example-rg" {
-  count    = var.env == "demo" ? 0 : 1
+  count    = var.env == "demo" ? 1 : 0
   name     = "jenkins-state-example"
   location = var.location
 
