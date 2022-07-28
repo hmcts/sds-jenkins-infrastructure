@@ -7,7 +7,18 @@ resource "azurerm_key_vault" "jenkinskv" {
   soft_delete_retention_days = 7
   enable_rbac_authorization  = true
   tags                       = module.tags.common_tags
+}
 
+resource "azurerm_key_vault" "jenkinskv-prod" {
+  count                      = var.env == "ptl" ? 0 : 1
+  location                   = var.location
+  name                       = "prod-vault"
+  resource_group_name        = azurerm_resource_group.rg.name
+  sku_name                   = "standard"
+  tenant_id                  = data.azurerm_client_config.current.tenant_id
+  soft_delete_retention_days = 7
+  enable_rbac_authorization  = true
+  tags                       = module.tags.common_tags
 }
 
 resource "azurerm_role_assignment" "jenkinskvrole" {
@@ -22,14 +33,24 @@ resource "azurerm_key_vault_secret" "disk" {
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }
 
-resource "azurerm_key_vault_secret" "db" {
-  name         = "cosmosdb-token-key"
-  value        = azurerm_cosmosdb_account.cosmosdb.primary_master_key
-  key_vault_id = azurerm_key_vault.jenkinskv.id
-}
-
 resource "random_password" "jenkins-agent-password" {
   length  = 16
+  special = true
+  lower   = true
+  upper   = true
+  number  = true
+}
+
+resource "random_password" "jenkins-agent-password2" {
+  length  = 12
+  special = true
+  lower   = true
+  upper   = true
+  number  = true
+}
+
+resource "random_password" "jenkins-agent-password3" {
+  length  = 14
   special = true
   lower   = true
   upper   = true
@@ -40,6 +61,14 @@ resource "azurerm_key_vault_secret" "jenkins-agent-password" {
   name         = "jenkins-agent-password"
   value        = random_password.jenkins-agent-password.result
   key_vault_id = azurerm_key_vault.jenkinskv.id
+  
+  tags = {
+    hi = "hello"
+    test = "testing"
+    foo = "foobar"
+    roo = "ruby"
+  }
+
 }
 
 resource "azurerm_key_vault_secret" "subscription_id" {
@@ -51,6 +80,13 @@ resource "azurerm_key_vault_secret" "subscription_id" {
 resource "azurerm_key_vault_secret" "env_subscription_id" {
   for_each     = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.ptlsbox
   name         = "${each.key}-subscription-id"
+  value        = each.value
+  key_vault_id = azurerm_key_vault.jenkinskv.id
+}
+  
+resource "azurerm_key_vault_secret" "env_subscription_id2" {
+  for_each     = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.ptlsbox
+  name         = "${each.key}-subscription-id2"
   value        = each.value
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }

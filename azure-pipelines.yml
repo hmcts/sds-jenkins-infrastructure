@@ -8,7 +8,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/master
+    ref: refs/heads/DTSPO-9061_tfcmt
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts (1)'
 
@@ -29,46 +29,55 @@ parameters:
       component: 'jenkins'
       service_connection: 'OPS-APPROVAL-GATE-PTLSBOX-ENVS'
       dependsOn: 'Precheck'
+      sensitive: false
     - deployment: 'sbox_jenkins'
       environment: 'sbox'
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-SBOX'
       dependsOn: 'Precheck'
+      sensitive: false
     - deployment: 'ptl_jenkins'
       environment: 'ptl'
       component: 'jenkins'
       service_connection: 'OPS-APPROVAL-GATE-PTL-ENVS'
       dependsOn: 'Precheck'
+      sensitive: false
     - deployment: 'prod_jenkins'
       environment: 'prod'
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-PROD'
       dependsOn: 'Precheck'
+      sensitive: false
     - deployment: 'stg_jenkins'
       environment: 'stg'
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-STG'
       dependsOn: 'Precheck'
+      sensitive: false
     - deployment: 'ithc_jenkins'
       environment: 'ithc'
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-ITHC'
       dependsOn: 'Precheck'
+      sensitive: false
     - deployment: 'dev_jenkins'
       environment: 'dev'
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-DEV'
       dependsOn: 'Precheck'
+      sensitive: false
     - deployment: 'demo_jenkins'
       environment: 'demo'
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-DEMO'
       dependsOn: 'Precheck'
+      sensitive: true
     - deployment: 'test_jenkins'
       environment: 'test'
       component: 'subscription-base-infra'
       service_connection: 'DTS-SHAREDSERVICES-TEST'
       dependsOn: 'Precheck'
+      sensitive: false
 
 
 variables:
@@ -92,11 +101,7 @@ stages:
           vmImage: ${{ variables.agentPool }}
         timeoutInMinutes: ${{ variables.timeoutInMinutes }}
         steps:
-          - template: steps/terraform-precheck.yaml@cnp-azuredevops-libraries
-            parameters:
-              keyvaultName: 'infra-vault-nonprod'
-              keyvaultSecret: 'azure-devops-token'
-              serviceConnection: 'DCD-CFT-Sandbox'
+          - script: echo hello
 
 
   - ${{ each deployment in parameters.environment_components }}:
@@ -116,3 +121,4 @@ stages:
               serviceConnection: ${{ deployment.service_connection }}
               terraformInitSubscription: ${{ variables.terraformInitSubscription }}
               product: ${{ variables.product }}
+              sensitive: ${{ deployment.sensitive }}
