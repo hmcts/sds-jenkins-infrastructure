@@ -8,7 +8,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/updatecli_b9c2ce0f48cacc9d61e05a88d9016856af3be1dc360e3efcb97d2bdfd6fd5bfc
+    ref: refs/heads/updatecli_a4357ac2e72c73a91274308b00a5e789dd6cc26762368d2459593b927b42453b
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts (1)'
 
