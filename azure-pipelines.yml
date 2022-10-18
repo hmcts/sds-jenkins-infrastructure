@@ -8,7 +8,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/updatecli_b9c2ce0f48cacc9d61e05a88d9016856af3be1dc360e3efcb97d2bdfd6fd5bfc
+    ref: refs/heads/DTSPO-9914/Upgrade_pester_syntax_v5
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts (1)'
 
