@@ -8,7 +8,7 @@ resources:
   repositories:
   - repository: cnp-azuredevops-libraries
     type: github
-    ref: refs/heads/master
+    ref: refs/heads/DTSPO-9914/Upgrade_pester_syntax_v5
     name: hmcts/cnp-azuredevops-libraries
     endpoint: 'hmcts (1)'
 
@@ -75,7 +75,7 @@ variables:
   - name: timeoutInMinutes
     value: 60
   - name: agentPool
-    value: ubuntu-18.04
+    value: ubuntu-20.04
   - name: build
     value: $(Build.BuildNumber)
   - name: product
