@@ -34,12 +34,7 @@ variable "queue_name" {
 
   description = "Name of the servicebus Queue."
 }
-variable "key_vault_name" {
-  description = "Name of the keyvault in CFT to storage secrets"
-}
-variable "key_vault_rg_name" {
-  description = "Name of the keyvault resource group in CFT."
-}
+
 variable "zone_redundant" {
   description = "Enable Zone redundancy."
 
