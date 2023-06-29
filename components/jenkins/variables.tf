@@ -61,4 +61,4 @@ variable "expiresAfter" {
 variable "subscription_id" {
   description = "Subscription to run against"
   type        = string
-  }
+}
