@@ -14,6 +14,7 @@ module "jenkins-webhook-relay" {
   queue_name                         = var.queue_name
   zone_redundant                     = var.zone_redundant
   enable_workflow                    = var.enable_workflow
+  common_tags                        = module.tags.common_tags
 }
 
 resource "azurerm_key_vault_secret" "logicappsecret" {
