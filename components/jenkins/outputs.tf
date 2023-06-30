@@ -3,7 +3,7 @@ output "cosmos_db_url" {
 }
 
 output "cosmosdb_primary_master_key" {
-  value     = azurerm_cosmosdb_account.cosmosdb.primary_master_key
+  value     = azurerm_cosmosdb_account.cosmosdb.primary_key
   sensitive = true
 }
 output "cosmosdb_endpoint" {
