@@ -32,3 +32,8 @@ provider "azurerm" {
   features {}
 }
 
+provider "azurerm" {
+  features {}
+  alias           = "private_endpoint"
+  subscription_id = var.subscription_id
+}
