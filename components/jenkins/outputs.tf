@@ -9,7 +9,3 @@ output "cosmosdb_primary_master_key" {
 output "cosmosdb_endpoint" {
   value = azurerm_cosmosdb_account.cosmosdb.endpoint
 }
-output "apiconnection_id" {
-
-  value = module.jenkins-webhook-relay.apiconnection_id
-}
