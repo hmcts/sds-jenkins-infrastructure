@@ -15,7 +15,7 @@ module "jenkins-webhook-relay" {
   zone_redundant                     = var.zone_redundant
   enable_workflow                    = var.enable_workflow
   common_tags                        = module.tags.common_tags
-  max_delivery_count                 = 200
+  max_delivery_count                 = 50
 }
 
 resource "azurerm_key_vault_secret" "logicappsecret" {
