@@ -51,6 +51,9 @@ resource "azurerm_cosmosdb_sql_container" "container" {
 
   indexing_policy {
     indexing_mode = "consistent"
+    included_path {
+      path = "/*"
+    }
   }
 
 }
