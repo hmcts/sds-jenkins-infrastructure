@@ -16,3 +16,7 @@ data "azurerm_resource_group" "acr_rg" {
   provider = azurerm.acr
   name     = "rpe-acr-prod-rg"
 }
+
+data "azuread_service_principal" "app_proxy_ga_service_connection" {
+  display_name = "DTS Operations Bootstrap GA"
+}

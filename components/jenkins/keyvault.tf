@@ -16,6 +16,13 @@ resource "azurerm_role_assignment" "jenkinskvrole" {
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
 
+# Allows app-proxy automation to add client secret to Jenkins Key Vault 
+resource "azurerm_role_assignment" "app-proxy-ga-service-connection-secret-management" {
+  scope                = azurerm_key_vault.jenkinskv.id
+  role_definition_name = "Key Vault Secrets Officer"
+  principal_id         = data.azuread_service_principal.app_proxy_ga_service_connection
+}
+
 resource "azurerm_key_vault_secret" "disk" {
   name         = "jenkins-disk-id"
   value        = azurerm_managed_disk.disk.id
