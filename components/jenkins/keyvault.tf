@@ -20,7 +20,7 @@ resource "azurerm_role_assignment" "jenkinskvrole" {
 resource "azurerm_role_assignment" "app-proxy-ga-service-connection-secret-management" {
   scope                = azurerm_key_vault.jenkinskv.id
   role_definition_name = "Key Vault Secrets Officer"
-  principal_id         = data.azuread_service_principal.app_proxy_ga_service_connection
+  principal_id         = data.azuread_service_principal.app_proxy_ga_service_connection.principal_id
 }
 
 resource "azurerm_key_vault_secret" "disk" {
