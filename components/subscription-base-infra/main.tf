@@ -20,6 +20,7 @@ resource "azurerm_storage_account" "storage_account" {
   account_kind             = "StorageV2"
   account_tier             = "Standard"
   account_replication_type = "ZRS"
+  cross_tenant_replication_enabled = "false"
 
   blob_properties {
     delete_retention_policy {
