@@ -11,4 +11,8 @@ locals {
   ptlsbox = {
     sbox = "a8140a9e-f1b0-481f-a4de-09e2ee23f7ab"
   }
+  common_tags = merge(
+    module.tags.common_tags,
+    { startupMode = "always" }
+  )
 }
