@@ -14,7 +14,7 @@ resource "azurerm_storage_account" "storage_account" {
   }
 
 
-  tags = module.tags.common_tags
+  tags = local.common_tags
 }
 
 resource "azurerm_storage_container" "performance" {

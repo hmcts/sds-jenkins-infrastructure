@@ -8,7 +8,7 @@ resource "azurerm_cosmosdb_account" "cosmosdb" {
   resource_group_name        = azurerm_resource_group.rg.name
   offer_type                 = "Standard"
   kind                       = "GlobalDocumentDB"
-  tags                       = module.tags.common_tags
+  tags                       = local.common_tags
   automatic_failover_enabled = true
   consistency_policy {
     consistency_level = "Session"

@@ -18,7 +18,7 @@ module "tags" {
 resource "azurerm_resource_group" "rg" {
   name     = "${var.product}-${var.env}-rg"
   location = var.location
-  tags     = module.tags.common_tags
+  tags     = local.common_tags
 }
 
 resource "azurerm_managed_disk" "disk" {
@@ -28,7 +28,7 @@ resource "azurerm_managed_disk" "disk" {
   storage_account_type = "Premium_LRS"
   create_option        = "Empty"
   disk_size_gb         = "1024"
-  tags                 = module.tags.common_tags
+  tags                 = local.common_tags
   zone                 = "1"
 
 }
@@ -37,7 +37,7 @@ resource "azurerm_user_assigned_identity" "usermi" {
   resource_group_name = data.azurerm_resource_group.mi.name
   location            = var.location
   name                = "jenkins-${var.env}-mi"
-  tags                = module.tags.common_tags
+  tags                = local.common_tags
 }
 
 resource "azurerm_role_assignment" "miroles" {

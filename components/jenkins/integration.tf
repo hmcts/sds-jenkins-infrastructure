@@ -2,7 +2,7 @@ module "jenkins-webhook-relay" {
   providers = {
     azurerm.private_endpoint = azurerm.private_endpoint
   }
-  source                             = "git::https://github.com/hmcts/terraform-module-jenkins-webhook-infrastructure?ref=azurerm-4.x"
+  source                             = "git::https://github.com/hmcts/terraform-module-jenkins-webhook-infrastructure?ref=main"
   subscription_id                    = var.subscription_id
   env                                = var.env
   product                            = var.product
@@ -14,7 +14,7 @@ module "jenkins-webhook-relay" {
   queue_name                         = var.queue_name
   zone_redundant                     = var.zone_redundant
   enable_workflow                    = var.enable_workflow
-  common_tags                        = module.tags.common_tags
+  common_tags                        = local.common_tags
   max_delivery_count                 = 20
 }
 
