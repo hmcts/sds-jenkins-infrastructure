@@ -29,11 +29,11 @@ resource "azurerm_key_vault_secret" "disk" {
   key_vault_id = azurerm_key_vault.jenkinskv.id
 }
 
-resource "azurerm_key_vault_secret" "db" {
-  name         = "cosmosdb-token-key"
-  value        = azurerm_cosmosdb_account.cosmosdb.primary_key
-  key_vault_id = azurerm_key_vault.jenkinskv.id
-}
+# resource "azurerm_key_vault_secret" "db" {
+#   name         = "cosmosdb-token-key"
+#   value        = azurerm_cosmosdb_account.cosmosdb.primary_key
+#   key_vault_id = azurerm_key_vault.jenkinskv.id
+# }
 
 resource "random_password" "jenkins-agent-password" {
   length  = 16
