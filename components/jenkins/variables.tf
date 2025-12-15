@@ -17,23 +17,6 @@ variable "builtFrom" {
   description = "Name of the GitHub repository this application is being built from."
   type        = string
 }
-variable "database" {
-  description = "Name of the cosmos database."
-  default     = "jenkins"
-}
-variable "max_throughput" {
-  default     = "4000"
-  description = "The Maximum throughput of SQL database (RU/s)."
-}
-variable "partition_key" {
-  type        = map(any)
-  description = "Partition Keys for corresponding databases."
-  default = {
-    cve-reports         = "/build/git_url"
-    performance-metrics = "/_partitionKey"
-    pipeline-metrics    = "/_partitionKey"
-  }
-}
 
 variable "private_dns_subscription_id" {}
 
