@@ -30,7 +30,7 @@ resource "azurerm_role_assignment" "compute_gallery_image_reader" {
   principal_id         = azurerm_user_assigned_identity.usermi2.principal_id
 }
 
-resource "azurerm_role_assignment" "hmctsacrpull" {
+resource "azurerm_role_assignment" "hmctsacrpull2" {
   count = var.env == "ptlsbox" ? 1 : 0
 
   scope                = data.azurerm_resource_group.acr_rg.id
