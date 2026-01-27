@@ -11,7 +11,7 @@ resource "azurerm_role_assignment" "vm_contributor" {
 
   scope                = "/subscriptions/${data.azurerm_client_config.current.subscription_id}"
   role_definition_name = "VM Contributor"
-  principal_id         = azurerm_user_assigned_identity.usermi2.principal_id
+  principal_id         = azurerm_user_assigned_identity.usermi2[0].principal_id
 }
 
 resource "azurerm_role_assignment" "network_contributor" {
@@ -19,7 +19,7 @@ resource "azurerm_role_assignment" "network_contributor" {
 
   scope                = "/subscriptions/${data.azurerm_client_config.current.subscription_id}"
   role_definition_name = "Network Contributor"
-  principal_id         = azurerm_user_assigned_identity.usermi2.principal_id
+  principal_id         = azurerm_user_assigned_identity.usermi2[0].principal_id
 }
 
 resource "azurerm_role_assignment" "compute_gallery_image_reader" {
@@ -27,7 +27,7 @@ resource "azurerm_role_assignment" "compute_gallery_image_reader" {
 
   scope                = "/subscriptions/${data.azurerm_client_config.current.subscription_id}"
   role_definition_name = "Compute Gallery Image Reader"
-  principal_id         = azurerm_user_assigned_identity.usermi2.principal_id
+  principal_id         = azurerm_user_assigned_identity.usermi2[0].principal_id
 }
 
 resource "azurerm_role_assignment" "hmctsacrpull2" {
@@ -35,5 +35,5 @@ resource "azurerm_role_assignment" "hmctsacrpull2" {
 
   scope                = data.azurerm_resource_group.acr_rg.id
   role_definition_name = "AcrPull"
-  principal_id         = azurerm_user_assigned_identity.usermi2.principal_id
+  principal_id         = azurerm_user_assigned_identity.usermi2[0].principal_id
 }
