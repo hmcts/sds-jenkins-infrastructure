@@ -32,7 +32,7 @@ resource "azurerm_role_assignment" "compute_gallery_image_reader" {
 
 resource "azurerm_role_assignment" "ptlcontributor" {
 
-  for_each             = data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.ptlsbox
+  for_each             = var.env == "ptl" ? (data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.ptlsbox) : {}
   scope                = "/subscriptions/${each.value}"
   role_definition_name = "Contributor"
   principal_id         = azurerm_user_assigned_identity.usermi2[0].principal_id
