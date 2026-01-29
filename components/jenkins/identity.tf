@@ -38,6 +38,14 @@ resource "azurerm_role_assignment" "ptlcontributor" {
   principal_id         = azurerm_user_assigned_identity.usermi2[0].principal_id
 }
 
+resource "azurerm_role_assignment" "ptluseraccessadmin" {
+
+  for_each             = var.env == "ptl" ? (data.azurerm_client_config.current.subscription_id == "6c4d2513-a873-41b4-afdd-b05a33206631" ? local.ptl : local.ptlsbox) : {}
+  scope                = "/subscriptions/${each.value}"
+  role_definition_name = "User Access Administrator"
+  principal_id         = azurerm_user_assigned_identity.usermi2[0].principal_id
+}
+
 resource "azurerm_role_assignment" "hmctsacrpull2" {
   count = var.env == "ptl" ? 1 : 0
 
