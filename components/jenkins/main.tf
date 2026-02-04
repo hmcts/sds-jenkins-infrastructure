@@ -29,7 +29,7 @@ resource "azurerm_managed_disk" "disk" {
   create_option        = "Empty"
   disk_size_gb         = "1024"
   tags                 = local.common_tags
-  zone                 = "1"
+  zone                 = ["1", "2", "3"]
 
 }
 
