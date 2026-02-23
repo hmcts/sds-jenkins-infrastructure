@@ -10,6 +10,14 @@ resource "azurerm_key_vault" "jenkinskv" {
 
 }
 
+resource "azurerm_role_assignment" "DTSPO-30163" {
+  count = var.env == "ptlsbox" ? 1 : 0
+
+  scope                = azurerm_key_vault.jenkinskv.id
+  role_definition_name = "Key Vault Secrets User"
+  principal_id         = "17ec686e-b62a-45d4-8dce-42ff580d2a32"
+}
+
 resource "azurerm_role_assignment" "jenkinskvrole" {
   scope                = azurerm_key_vault.jenkinskv.id
   role_definition_name = "Key Vault Secrets User"
