@@ -10,6 +10,12 @@ resource "azurerm_key_vault" "jenkinskv" {
 
 }
 
+resource "azurerm_role_assignment" "dtspo-30477-vault-access" {
+  scope                = azurerm_key_vault.jenkinskv.id
+  role_definition_name = "Key Vault Secrets User"
+  principal_id         = "446d9962-16af-444c-b72e-ce0f5a99999e"
+}
+
 resource "azurerm_role_assignment" "jenkinskvrole" {
   scope                = azurerm_key_vault.jenkinskv.id
   role_definition_name = "Key Vault Secrets User"
