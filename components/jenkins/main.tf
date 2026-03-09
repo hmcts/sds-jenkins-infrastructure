@@ -67,3 +67,11 @@ resource "azurerm_role_assignment" "hmctsacrpull" {
   role_definition_name = "AcrPull"
   principal_id         = azurerm_user_assigned_identity.usermi.principal_id
 }
+
+# Required to allow SDS builds to onboard to immutable backups
+resource "azurerm_role_assignment" "cnp_backup_vault_contributor" {
+  count                = var.env == "ptl" ? 1 : 0
+  scope                = data.azurerm_recovery_services_vault.backup_vault[0].id
+  role_definition_name = "Contributor"
+  principal_id         = azurerm_user_assigned_identity.usermi.principal_id
+}
