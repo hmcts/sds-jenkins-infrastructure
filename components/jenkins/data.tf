@@ -24,5 +24,5 @@ data "azuread_service_principal" "app_proxy_ga_service_connection" {
 data "azurerm_data_protection_backup_vault" "backup_vault" {
   count               = var.env == "ptl" ? 1 : 0
   name                = "cnp-backup-vault"
-  resource_group_name = "cnp-backup-vault-rg"
+  resource_group_name = "mgmt-infra-prod-rg"
 }
