@@ -21,7 +21,7 @@ data "azuread_service_principal" "app_proxy_ga_service_connection" {
   display_name = "DTS Operations Bootstrap GA"
 }
 
-data "azurerm_recovery_services_vault" "backup_vault" {
+data "azurerm_data_protection_backup_vault" "backup_vault" {
   count               = var.env == "ptl" ? 1 : 0
   name                = "cnp-backup-vault"
   resource_group_name = "cnp-backup-vault-rg"
