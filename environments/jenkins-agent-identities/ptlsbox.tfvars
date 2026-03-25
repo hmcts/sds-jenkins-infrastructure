@@ -1,0 +1,9 @@
+env                                  = "ptlsbox"
+subscription_id                      = "64b1c6d6-1481-44ad-b620-d8fe26a2c768"
+private_dns_subscription_id          = "ed302caf-ec27-4c64-a05e-85731c3ce90e"
+private_dns_resource_group_name      = "reformMgmtRG"
+managed_identity_name                = "jenkins-ptlsbox-mi"
+managed_identity_resource_group_name = "managed-identities-ptlsbox-rg"
+create_identity                      = false
+manage_contributor_role              = false
+cosmos_subscription_id               = "a8140a9e-f1b0-481f-a4de-09e2ee23f7ab"
