@@ -1,7 +1,3 @@
-/*
-Temporarily disabled while the deployment identity lacks
-`Microsoft.DocumentDB/databaseAccounts/read` on the pipeline metrics account.
-
 data "azurerm_cosmosdb_account" "pipeline_metrics" {
   provider = azurerm.cosmosdb
 
@@ -19,4 +15,3 @@ resource "azurerm_cosmosdb_sql_role_assignment" "cosmosdb_data_contributor" {
   principal_id       = local.principal_id
   scope              = data.azurerm_cosmosdb_account.pipeline_metrics.id
 }
-*/
