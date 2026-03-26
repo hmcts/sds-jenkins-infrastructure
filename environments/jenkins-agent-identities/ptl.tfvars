@@ -6,4 +6,4 @@ managed_identity_name                = "jenkins-ptl-mi"
 managed_identity_resource_group_name = "managed-identities-ptl-rg"
 create_identity                      = false
 manage_contributor_role              = false
-cosmos_subscription_id               = "5ca62022-6aa2-4cee-aaa7-e7536c8d566c"
+cosmos_subscription_id               = "8999dec3-0104-4a27-94ee-6588559729d1"
