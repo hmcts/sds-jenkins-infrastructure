@@ -12,7 +12,11 @@ variable "location" {
   type        = string
   default     = "UK South"
 }
-
+variable "storage_account_type" {
+  description = "Storage Account type"
+  type        = string
+  default     = "Premium_LRS"
+}
 variable "builtFrom" {
   description = "Name of the GitHub repository this application is being built from."
   type        = string
