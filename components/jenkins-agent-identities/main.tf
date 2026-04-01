@@ -83,3 +83,50 @@ resource "azurerm_role_assignment" "private_dns_zone_contributor" {
   role_definition_name = "Private DNS Zone Contributor"
   principal_id         = local.principal_id
 }
+
+resource "azurerm_key_vault_access_policy" "this" {
+  for_each = { for k,v in var.key_vaults : k => v if var.key_vaults != {} }
+
+  key_vault_id = data.azurerm_key_vault.this[each.key].id
+  tenant_id    = data.azurerm_client_config.current.tenant_id
+  object_id    = local.principal_id
+
+  key_permissions = [
+    "Create",
+    "Delete",
+    "Encrypt",
+    "Decrypt",
+    "Get",
+    "Import",
+    "List",
+    "Recover",
+    "Restore",
+    "Update",
+    "Backup",
+    "UnwrapKey",
+    "WrapKey",
+    "Verify",
+    "Sign",
+    "Purge"
+  ]
+
+  secret_permissions = [
+    "Backup",
+    "Delete",
+    "Get",
+    "List",
+    "Recover",
+    "Restore",
+    "Set",
+    "Purge"
+  ]
+
+  certificate_permissions = [
+    "Create",
+    "Delete",
+    "DeleteIssuers",
+    "Get",
+    "GetIssuers",
+    "Import"
+  ]
+}

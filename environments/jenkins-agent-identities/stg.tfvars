@@ -6,3 +6,10 @@ managed_identity_name                = "jenkins-stg-mi"
 managed_identity_resource_group_name = "managed-identities-stg-rg"
 create_identity                      = true
 cosmos_subscription_id               = "8999dec3-0104-4a27-94ee-6588559729d1"
+
+key_vaults = {
+  "infra-vault-nonprod" = {
+    name                = "infra-vault-nonprod"
+    resource_group_name = "cnp-core-infra"
+  }
+}

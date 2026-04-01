@@ -78,3 +78,12 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "key_vaults" {
+  description = "Map of key vaults to which the managed identity should be granted access, keyed by an arbitrary name. Each value should be an object with 'name' and 'resource_group_name' properties."
+  type = map(object({
+    name                = string
+    resource_group_name = string
+  }))
+  default = {}
+}
