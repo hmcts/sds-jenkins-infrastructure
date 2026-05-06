@@ -1,7 +1,7 @@
 env                                  = "ptl"
 subscription_id                      = "6c4d2513-a873-41b4-afdd-b05a33206631"
-private_dns_subscription_id          = "ed302caf-ec27-4c64-a05e-85731c3ce90e"
-private_dns_resource_group_name      = "reformMgmtRG"
+private_dns_subscription_id          = "1baf5470-1c3e-40d3-a6f7-74bfbce4b348"
+private_dns_resource_group_name      = "core-infra-intsvc-rg"
 managed_identity_name                = "jenkins-ptl-mi"
 managed_identity_resource_group_name = "managed-identities-ptl-rg"
 create_identity                      = false
