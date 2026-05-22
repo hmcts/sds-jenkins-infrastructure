@@ -7,6 +7,7 @@ This component manages one Jenkins VM-agent managed identity per SDS environment
 - `Azure Kubernetes Service Cluster Admin Role` on the target environment subscription
 - `Private DNS Zone Contributor` on the shared private DNS resource group
 - `Cosmos DB Built-in Data Contributor` on the pipeline metrics account
+- Membership of `DTS Directory Readers` for AzureAD lookups during Terraform runs
 
 `User Access Administrator` is intentionally not included so the impact can be tested separately.
 
