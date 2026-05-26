@@ -32,6 +32,10 @@ variable "zone_redundant" {
   description = "Enable Zone redundancy."
   default     = false
 }
+variable "disk_storage_account_type" {
+  description = "Storage account type for the Jenkins managed disk. Use Premium_ZRS for zone-redundant storage (required when nodes span multiple availability zones)."
+  default     = "Premium_LRS"
+}
 variable "enable_workflow" {
   description = "Enable workflow"
   default     = true
