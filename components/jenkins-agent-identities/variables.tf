@@ -35,6 +35,12 @@ variable "cosmos_subscription_id" {
   type        = string
 }
 
+variable "additional_subscription_ids" {
+  description = "Additional subscription IDs for managed identity and subscription-level role assignments."
+  type        = list(string)
+  default     = []
+}
+
 variable "managed_identity_name" {
   description = "Managed identity name."
   type        = string
