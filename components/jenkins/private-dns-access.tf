@@ -11,3 +11,8 @@ resource "azurerm_role_assignment" "dns_contributor" {
   role_definition_name = "Private DNS Zone Contributor"
   scope                = data.azurerm_resource_group.dns.id
 }
+
+import {
+  to = azurerm_role_assignment.dns_contributor
+  id = "/subscriptions/${var.private_dns_subscription_id}/resourceGroups/${data.azurerm_resource_group.dns.name}/providers/Microsoft.Authorization/roleAssignments/${var.role_assignment_id}"
+}

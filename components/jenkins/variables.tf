@@ -49,3 +49,8 @@ variable "subscription_id" {
   description = "Subscription to run against"
   type        = string
 }
+
+variable "role_assignment_id" {
+  description = "Role assignment ID for the Private DNS Zone Contributor role."
+  type        = string
+}
