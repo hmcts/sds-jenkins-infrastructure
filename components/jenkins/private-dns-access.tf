@@ -14,5 +14,5 @@ resource "azurerm_role_assignment" "dns_contributor" {
 
 import {
   to = azurerm_role_assignment.dns_contributor
-  id = "/subscriptions/${var.subscription_id}/resourceGroups/${data.azurerm_resource_group.dns.name}/providers/Microsoft.Authorization/roleAssignments/${azurerm_role_assignment.dns_contributor.id}"
+  id = "/subscriptions/${var.subscription_id}/resourceGroups/${data.azurerm_resource_group.dns.name}/providers/Microsoft.Authorization/roleAssignments/${var.role_assignment_id}"
 }
