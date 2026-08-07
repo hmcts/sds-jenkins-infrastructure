@@ -29,6 +29,12 @@ resource "azurerm_storage_container" "artifacts" {
   container_access_type = "private"
 }
 
+resource "azurerm_storage_container" "job_cache" {
+  name                  = "job-cache"
+  storage_account_name  = azurerm_storage_account.storage_account.name
+  container_access_type = "private"
+}
+
 resource "azurerm_key_vault_secret" "account_key" {
   name         = "buildlog-storage-account"
   value        = azurerm_storage_account.storage_account.primary_access_key
@@ -37,4 +43,10 @@ resource "azurerm_key_vault_secret" "account_key" {
   tags = {
     "username" = azurerm_storage_account.storage_account.name
   }
+}
+
+resource "azurerm_key_vault_secret" "job_cache_account_key" {
+  name         = "jenkins-job-cache-key"
+  value        = azurerm_storage_account.storage_account.primary_access_key
+  key_vault_id = azurerm_key_vault.jenkinskv.id
 }
