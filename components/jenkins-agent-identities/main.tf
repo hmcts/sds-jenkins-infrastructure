@@ -66,34 +66,6 @@ resource "azurerm_role_assignment" "contributor" {
   principal_id         = local.principal_id
 }
 
-resource "azurerm_role_assignment" "rbac_administrator" {
-  count = var.manage_contributor_role ? 1 : 0
-
-  scope = "/subscriptions/${var.subscription_id}"
-  name = uuidv5(
-    "url",
-    "Role Based Access Control Administrator:/subscriptions/${var.subscription_id}:${local.principal_id}"
-  )
-  role_definition_name = "Role Based Access Control Administrator"
-  principal_id         = local.principal_id
-  condition_version    = "2.0"
-  condition            = <<-EOT
-    (
-      !(ActionMatches{'Microsoft.Authorization/roleAssignments/write'})
-      OR
-      @Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId]
-        ForAnyOfAnyValues:GuidEquals {ba92f5b4-2d11-453d-a403-e96b0029c9fe}
-    )
-    AND
-    (
-      !(ActionMatches{'Microsoft.Authorization/roleAssignments/delete'})
-      OR
-      @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId]
-        ForAnyOfAnyValues:GuidEquals {ba92f5b4-2d11-453d-a403-e96b0029c9fe}
-    )
-  EOT
-}
-
 resource "azurerm_role_assignment" "aks_cluster_admin" {
   count = var.manage_aks_cluster_admin_role ? 1 : 0
 
