@@ -6,5 +6,5 @@ managed_identity_name                = "jenkins-demo-mi"
 managed_identity_resource_group_name = "managed-identities-demo-rg"
 create_identity                      = true
 cosmos_subscription_id               = "8999dec3-0104-4a27-94ee-6588559729d1"
-additional_subscription_ids          = ["fb084706-583f-4c9a-bdab-949aac66ba5c"]
+additional_subscription_ids          = ["fb084706-583f-4c9a-bdab-949aac66ba5c", "1c4f0704-a29e-403d-b719-b90c34ef14c9"]
 
