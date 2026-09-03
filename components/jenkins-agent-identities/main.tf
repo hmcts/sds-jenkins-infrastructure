@@ -94,6 +94,25 @@ resource "azurerm_role_assignment" "rbac_administrator" {
   EOT
 }
 
+resource "azurerm_role_assignment" "role_assignment_write" {
+  scope = "/subscriptions/${var.subscription_id}"
+  name = uuidv5(
+    "url",
+    "Role Based Access Control Administrator:/subscriptions/${var.subscription_id}:${local.principal_id}"
+  )
+  role_definition_name = "Role Based Access Control Administrator"
+  principal_id         = local.principal_id
+  condition_version    = "2.0"
+  condition            = <<-EOT
+    (
+      (ActionMatches{'Microsoft.Authorization/roleAssignments/write'})
+    AND
+    (
+      (ActionMatches{'Microsoft.Authorization/roleAssignments/delete'})
+    )
+  EOT
+}
+
 resource "azurerm_role_assignment" "aks_cluster_admin" {
   count = var.manage_aks_cluster_admin_role ? 1 : 0
 
