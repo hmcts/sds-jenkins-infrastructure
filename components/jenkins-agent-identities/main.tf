@@ -66,13 +66,13 @@ resource "azurerm_role_assignment" "contributor" {
   principal_id         = local.principal_id
 }
 
-resource "azurerm_role_assignment" "rbac_administrator" {
+resource "azurerm_role_assignment" "storage_account_data_contributor" {
   count = var.manage_contributor_role ? 1 : 0
 
   scope = "/subscriptions/${var.subscription_id}"
   name = uuidv5(
     "url",
-    "Role Based Access Control Administrator:/subscriptions/${var.subscription_id}:${local.principal_id}"
+    "Storage Account Data Contributor:/subscriptions/${var.subscription_id}:${local.principal_id}"
   )
   role_definition_name = "Role Based Access Control Administrator"
   principal_id         = local.principal_id
@@ -90,6 +90,34 @@ resource "azurerm_role_assignment" "rbac_administrator" {
       OR
       @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId]
         ForAnyOfAnyValues:GuidEquals {ba92f5b4-2d11-453d-a403-e96b0029c9fe}
+    )
+  EOT
+}
+
+resource "azurerm_role_assignment" "storage_account_contributor" {
+  count = var.manage_contributor_role ? 1 : 0
+
+  scope = "/subscriptions/${var.subscription_id}"
+  name = uuidv5(
+    "url",
+    "Storage Account Contributor:/subscriptions/${var.subscription_id}:${local.principal_id}"
+  )
+  role_definition_name = "Role Based Access Control Administrator"
+  principal_id         = local.principal_id
+  condition_version    = "2.0"
+  condition            = <<-EOT
+    (
+      !(ActionMatches{'Microsoft.Authorization/roleAssignments/write'})
+      OR
+      @Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId]
+        ForAnyOfAnyValues:GuidEquals {17d1049b-9a84-46fb-8f53-869881c3d3ab}
+    )
+    AND
+    (
+      !(ActionMatches{'Microsoft.Authorization/roleAssignments/delete'})
+      OR
+      @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId]
+        ForAnyOfAnyValues:GuidEquals {17d1049b-9a84-46fb-8f53-869881c3d3ab}
     )
   EOT
 }
