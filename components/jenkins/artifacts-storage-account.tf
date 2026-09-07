@@ -35,6 +35,32 @@ resource "azurerm_storage_container" "job_cache" {
   container_access_type = "private"
 }
 
+resource "azurerm_storage_management_policy" "job_cache" {
+  storage_account_id = azurerm_storage_account.storage_account.id
+
+  rule {
+    name    = "delete-job-cache-after-30-days"
+    enabled = true
+
+    filters {
+      prefix_match = ["job-cache/"]
+      blob_types   = ["blockBlob"]
+    }
+
+    actions {
+      base_blob {
+        delete_after_days_since_modification_greater_than = 30
+      }
+      snapshot {
+        delete_after_days_since_creation_greater_than = 30
+      }
+      version {
+        delete_after_days_since_creation = 30
+      }
+    }
+  }
+}
+
 resource "azurerm_key_vault_secret" "account_key" {
   name         = "buildlog-storage-account"
   value        = azurerm_storage_account.storage_account.primary_access_key
