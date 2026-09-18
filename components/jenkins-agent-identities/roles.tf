@@ -35,11 +35,7 @@ resource "azurerm_role_assignment" "additional_contributor" {
 resource "azurerm_role_assignment" "rbac_administrator" {
   for_each = local.rbac_admin_role_guids
 
-  scope = "/subscriptions/${var.subscription_id}"
-  name = uuidv5(
-    "url",
-    "${each.key}:/subscriptions/${var.subscription_id}:${local.principal_id}"
-  )
+  scope                = "/subscriptions/${var.subscription_id}"
   role_definition_name = "Role Based Access Control Administrator"
   description          = "Allows this identity to assign the ${each.key} role"
   principal_id         = local.principal_id
