@@ -7,5 +7,6 @@ data "azuread_group" "directory_readers" {
 data "azurerm_role_definition" "additional_role" {
   for_each = toset(var.additional_roles)
 
-  name = each.value
+  name  = each.value
+  scope = "/subscriptions/${var.subscription_id}"
 }

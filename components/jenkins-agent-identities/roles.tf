@@ -32,7 +32,7 @@ resource "azurerm_role_assignment" "additional_contributor" {
   principal_id         = local.principal_id
 }
 
-resource "azurerm_role_assignment" "constrained_storage_role" {
+resource "azurerm_role_assignment" "rbac_administrator" {
   for_each = local.additional_role_guids
 
   scope = "/subscriptions/${var.subscription_id}"
