@@ -1,17 +1,3 @@
-data "azurerm_role_definition" "additional_role" {
-  for_each = toset(var.additional_roles)
-
-  name = each.value
-}
-
-locals {
-  # last path segment of the role definition id is its GUID
-  additional_role_guids = {
-    for name, def in data.azurerm_role_definition.additional_role :
-    name => element(split("/", def.id), length(split("/", def.id)) - 1)
-  }
-}
-
 resource "azurerm_role_assignment" "aks_cluster_admin" {
   count = var.manage_aks_cluster_admin_role ? 1 : 0
 

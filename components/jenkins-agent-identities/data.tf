@@ -3,3 +3,9 @@ data "azuread_group" "directory_readers" {
   display_name     = "DTS Directory Readers"
   security_enabled = true
 }
+
+data "azurerm_role_definition" "additional_role" {
+  for_each = toset(var.additional_roles)
+
+  name = each.value
+}
