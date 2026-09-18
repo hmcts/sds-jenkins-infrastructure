@@ -63,7 +63,7 @@ variable "manage_contributor_role" {
   default     = true
 }
 
-variable "additional_roles" {
+variable "rbac_admin_roles" {
   description = "Names of additional built-in Azure roles to assign, delegated via a Role Based Access Control Administrator condition. Role definition GUIDs are looked up dynamically."
   type        = list(string)
   default     = ["Storage Account Contributor", "Storage Blob Data Contributor"]

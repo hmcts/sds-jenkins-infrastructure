@@ -7,4 +7,4 @@ managed_identity_resource_group_name = "managed-identities-stg-rg"
 create_identity                      = true
 cosmos_subscription_id               = "8999dec3-0104-4a27-94ee-6588559729d1"
 additional_subscription_ids          = ["8ae5b3b6-0b12-4888-b894-4cec33c92292", "1c4f0704-a29e-403d-b719-b90c34ef14c9", "0978315c-75fe-4ada-9d11-1eb5e0e0b214"]
-additional_roles                     = ["Storage Account Contributor", "Storage Blob Data Contributor", "Azure Service Bus Data Owner", "Azure Service Bus Data Sender", "Azure Service Bus Data Receiver"]
+rbac_admin_roles                     = ["Storage Account Contributor", "Storage Blob Data Contributor", "Azure Service Bus Data Owner", "Azure Service Bus Data Sender", "Azure Service Bus Data Receiver"]

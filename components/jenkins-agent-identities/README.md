@@ -15,7 +15,7 @@ This component manages one Jenkins VM-agent managed identity per SDS environment
 `environments/jenkins-agent-identities/` contains one tfvars file per SDS environment:
 - `sbox`, `dev`, `stg`, `ithc`, `test`, `demo`, `ptlsbox`, `ptl`, `prod`
 
-## Additional roles using Azure Role Based Access Control Administrator
+## Enable role assignment using Azure Role Based Access Control Administrator
 
 In Azure, an RBAC Administrator is a role that governs what roles an identity can assign.
 
@@ -25,10 +25,10 @@ That means the identity can only grant that role specifically over any resources
 
 In the case of Jenkins, the identity used by the agents can grant Storage Account Contributor access to any resource it creates but it cannot grant Owner.
 
-To define the roles Jenkins can assign, add its name to `additional_roles` in the tfvars file.
+To define the roles Jenkins can assign, add its name to `rbac_admin_roles` in the tfvars file.
 
 ```
-additional_roles = ["Storage Account Contributor", "Storage Blob Data Contributor"]
+rbac_admin_roles = ["Storage Account Contributor", "Storage Blob Data Contributor"]
 ```
 
 Note: the role definition name must be exact for this to work. If you don't enter a valid role, the pipeline will run until timing out as the role cannot be found rather than failing because the role doesn't exist.
