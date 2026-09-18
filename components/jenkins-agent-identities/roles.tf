@@ -33,7 +33,7 @@ resource "azurerm_role_assignment" "additional_contributor" {
 }
 
 resource "azurerm_role_assignment" "rbac_administrator" {
-  for_each = local.additional_role_guids
+  for_each = local.rbac_admin_role_guids
 
   scope = "/subscriptions/${var.subscription_id}"
   name = uuidv5(
