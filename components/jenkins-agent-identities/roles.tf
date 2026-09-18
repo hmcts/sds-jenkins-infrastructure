@@ -41,6 +41,7 @@ resource "azurerm_role_assignment" "rbac_administrator" {
     "${each.key}:/subscriptions/${var.subscription_id}:${local.principal_id}"
   )
   role_definition_name = "Role Based Access Control Administrator"
+  description          = "Allows this identity to assign the ${each.key} role"
   principal_id         = local.principal_id
   condition_version    = "2.0"
   condition            = <<-EOT
