@@ -33,26 +33,27 @@ resource "azurerm_role_assignment" "additional_contributor" {
 }
 
 resource "azurerm_role_assignment" "rbac_administrator" {
-  for_each = local.rbac_admin_role_guids
+  count = length(var.rbac_admin_roles) > 0 ? 1 : 0
 
   scope                = "/subscriptions/${var.subscription_id}"
   role_definition_name = "Role Based Access Control Administrator"
-  description          = "Allows this identity to assign the ${each.key} role"
+  description          = "Allows this identity to assign the following roles: ${join(", ", var.rbac_admin_roles)}"
   principal_id         = local.principal_id
   condition_version    = "2.0"
-  condition            = <<-EOT
+  # Azure allows only one Role Based Access Control Administrator assignment per (principal, scope); all delegated roles must share this single assignment.
+  condition = <<-EOT
     (
       !(ActionMatches{'Microsoft.Authorization/roleAssignments/write'})
       OR
       @Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId]
-        ForAnyOfAnyValues:GuidEquals {${each.value}}
+        ForAnyOfAnyValues:GuidEquals {${join(", ", values(local.rbac_admin_role_guids))}}
     )
     AND
     (
       !(ActionMatches{'Microsoft.Authorization/roleAssignments/delete'})
       OR
       @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId]
-        ForAnyOfAnyValues:GuidEquals {${each.value}}
+        ForAnyOfAnyValues:GuidEquals {${join(", ", values(local.rbac_admin_role_guids))}}
     )
   EOT
 }
