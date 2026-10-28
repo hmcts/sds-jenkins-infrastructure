@@ -66,7 +66,7 @@ variable "manage_contributor_role" {
 variable "rbac_admin_roles" {
   description = "Names of built-in Azure roles that the identity should be allowed to assign, delegated via a Role Based Access Control Administrator condition. Role definition GUIDs are looked up dynamically."
   type        = list(string)
-  default     = ["Storage Account Contributor", "Storage Blob Data Contributor", "Storage Blob Data Reader", "Cognitive Services OpenAI User", "Cognitive Services User", "Reader", "PostgreSQL Flexible Server Long Term Retention Backup Role", "Cognitive Services User", "Cognitive Services Speech User"]
+  default     = ["Storage Account Contributor", "Storage Blob Data Contributor", "Storage Blob Data Reader", "Cognitive Services OpenAI User", "Cognitive Services User", "Reader", "PostgreSQL Flexible Server Long Term Retention Backup Role", "Cognitive Services User", "Cognitive Services Speech User", "Azure Service Bus Data Sender", "Azure Service Bus Data Receiver", "Azure Service Bus Data Owner"]
 }
 
 variable "manage_aks_cluster_admin_role" {
