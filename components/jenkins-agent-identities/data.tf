@@ -10,3 +10,9 @@ data "azurerm_role_definition" "rbac_admin_role" {
   name  = each.value
   scope = "/subscriptions/${var.subscription_id}"
 }
+
+data "azurerm_monitor_action_group" "slack_alerts" {
+  provider            = azurerm.alerts-slack
+  resource_group_name = "sds-alerts-slack-ptl"
+  name                = "sds-alerts-slack-warning-alerts"
+}

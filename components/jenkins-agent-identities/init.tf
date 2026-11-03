@@ -31,3 +31,10 @@ provider "azurerm" {
   subscription_id                 = var.cosmos_subscription_id
   resource_provider_registrations = "none"
 }
+
+
+provider "azurerm" {
+  features {}
+  alias           = "alerts-slack"
+  subscription_id = var.alerts_subscription_id
+}

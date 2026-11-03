@@ -90,3 +90,9 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "alerts_subscription_id" {
+  description = "Subscription ID that hosts the Slack alerts resource group."
+  type        = string
+  default     = "6c4d2513-a873-41b4-afdd-b05a33206631"
+}

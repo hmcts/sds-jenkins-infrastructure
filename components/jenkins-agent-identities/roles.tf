@@ -57,3 +57,12 @@ resource "azurerm_role_assignment" "rbac_administrator" {
     )
   EOT
 }
+
+
+resource "azurerm_role_assignment" "monitoring_reader" {
+  provider             = azurerm.alerts-slack
+  scope                = data.azurerm_monitor_action_group.slack_alerts.id
+  name                 = local.principal_id
+  role_definition_name = "Monitoring Reader"
+  principal_id         = local.principal_id
+}
