@@ -2,7 +2,7 @@ module "jenkins-webhook-relay" {
   providers = {
     azurerm.private_endpoint = azurerm.private_endpoint
   }
-  source                             = "git::https://github.com/hmcts/terraform-module-jenkins-webhook-infrastructure?ref=main"
+  source                             = "git::https://github.com/hmcts/terraform-module-jenkins-webhook-infrastructure?ref=47938abebc04a72c6bfe4d80f568de6eb4c99f9c"
   subscription_id                    = var.subscription_id
   env                                = var.env
   product                            = var.product
